@@ -17,7 +17,9 @@
     "url": "https://github.com/PavelZabolotnikov/Flashcards_Hedgehogs/issues"
   },
   "homepage": "https://github.com/PavelZabolotnikov/Flashcards_Hedgehogs#readme",
-  "dependencies": {
-    "eslint": "^8.30.0"
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
   }
 }
