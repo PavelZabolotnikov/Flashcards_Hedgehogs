@@ -1,14 +1,13 @@
 const fs = require("fs");
 const readlineSync = require("readline-sync");
-const chalk = require("chalk");
-
-// const userName;
 
 function getUserName() {
   console.clear();
-  console.log(
-    chalk.rgb(255, 10, 67).bold("Добро пожаловать на нашу викторину!")
-  );
+  console.log("Привет игрок! 🖐");
+  console.log("Мы Ежи и хотим предложить сыграть тебе в игру!");
+  console.log("Назови свое имя:");
+  return readlineSync.question("===>");
 }
+const userName = getUserName();
 
-getUserName();
+console.log(userName);
