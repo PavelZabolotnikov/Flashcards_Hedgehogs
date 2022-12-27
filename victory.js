@@ -10,4 +10,16 @@ function getUserName() {
 }
 const userName = getUserName();
 
+function getNumberOfQweze() {
+  const namesOfFiles = fs.readdirSync("./topics");
+  let questionList = "";
+  namesOfFiles.map((el) => (questionList += `${el.slice(0, el.length - 4)}\n`));
+  console.clear();
+  console.log("Выберите тему:");
+  console.log(questionList);
+  return readlineSync.question("===>");
+}
+const quezeNum = getNumberOfQweze();
+
 console.log(userName);
+console.log(quezeNum);
