@@ -3,20 +3,15 @@ const readlineSync = require('readline-sync')
 
 readlineSync.question('Нажми Enter')
 
-console.log()
+class View {
+    constructor() {
+    }
+    async userName() {
+   const vopros = readlineSync.question('Как тебя зовут?');
+   console.log('Ваш ответ', vopros)
+    }
 
-const kviz = []; 
 
-console.log(kviz)
-console.log()
+}
 
-const vopros = readlineSync.question('1Вопрос \n>');
-
-console.log('Ваш ответ', vopros)
-// class View {
-//   constructor() {
-
-//   }
-// }
-
-// module.exports = View
+module.exports = View

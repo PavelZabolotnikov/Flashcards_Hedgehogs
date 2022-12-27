@@ -1,18 +1,16 @@
 class Model {
-  constructor (topic,question){
-
+  constructor (){
   }
-  async choseTopic() {
-    const topArr = await fs.reddir('./topics');
-    const topic = topArr.map((el)=> el.slice(0,-4));
+  async getTopics(dir) {
+    const topicArr = await fs.readdir(dir);
+    const topic = topicArr.map((el) => el.slice(0, -4));
     return topic;
   }
-   async getQuestion(choice) {
-    const file = await fs.readFile(`./topics/${choice}.txt`, 'utf-8');
-    const array = file.split('\n\n').map((el)=> el.split('\n'));
-    const answer = array.map((el)=> ({question: el[0], answers: [el[1],el[2],el[3]], true:el[4]})) 
-    return answer;
+
+    async readQuestions(choise) {
+    const questionsList = await fs.readFile(`./topics/${choise}.txt`, 'utf-8');
+    const questions = questionsList.split('\n\n').map((el) => ({ question: el.split('\n')[0], answer: el.split('\n')[1] }));
+    return questions;
   }
 }
-
 module.exports = Model

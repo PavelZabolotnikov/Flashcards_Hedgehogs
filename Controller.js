@@ -2,22 +2,18 @@ class Controller {
   constructor(model, view, topic) {
     this.model = model
     this.view = view
-    this.topic = topic
+    this.score = 0
   }
 
-  run() {
-    // Просим экземпляр класса модели прочитать папку со всеми темами и составить меню.
-    // Попутно передаем метод контроллера this.printTopicsController,
-    // так как нам нужно отправить сформинованное меню на вывод в экземпляр класса view
-    // после того, как завершится асинхронная операция чтения папки
-    // Здесь this.printTopicsController — является callback'ом  
-    this.model.readTopics(this.printTopicsController)
-  }
+  async run() {
+ const rightAnswer = 'Огонь 🔥🔥🔥'
+ const wrongAnswer = 'Не отчаиваемся'
+ const whoYou = await this.view.userName();
+ this.topics = await this.model.readTopics();
+ const elTopic = await this.view.chooseTopics(this.topics);
+ const quesObj = await this.model.readQuestions(elTopic);
+  } 
 
-  printTopicsController(topicsMenu) {
-    // Тут нужно попросить экземпляр класса view вывести меню пользователю, 
-    // а также дождаться ответа последнего
-  }
 
   
 }
