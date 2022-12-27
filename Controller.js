@@ -1,7 +1,8 @@
 class Controller {
-  constructor(model, view) {
+  constructor(model, view, topic) {
     this.model = model
     this.view = view
+    this.topic = topic
   }
 
   run() {
