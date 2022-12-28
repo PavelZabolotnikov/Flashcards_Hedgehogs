@@ -1,7 +1,14 @@
 const fs = require("fs");
 const readlineSync = require("readline-sync");
 
-readlineSync.question("Нажми Enter");
+ function privetstviePlayers(){
+  console.clear();
+  console.log("Приветствуем Вас на нашем квизе")
+  console.log("Как Вас зовут")
+  return readlineSync.question('Введи имя => ') 
+}
+
+const player = privetstviePlayers()
 
 const vopros = readlineSync.question("Как тебя зовут?");
 console.log("Ваш ответ", vopros);
@@ -32,3 +39,5 @@ showQuestions();
 
 const rightAnswers = "Молодец";
 const wrongAnswers = "Ещё повезет!";
+
+
