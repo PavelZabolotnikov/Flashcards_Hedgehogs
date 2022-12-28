@@ -45,9 +45,11 @@ function runner() {
       console.log(`Верно! Твои баллы: ${counter}`);
     } else console.log(`Неверно! Правильный ответ: ${questionList[i + 1]}`);
   }
-  console.log("Квиз окончен! Хотите повторить?");
+  console.log(
+    `Квиз окончен! Ты набрал(а) ${counter} баллов! Хочешь повторить?`
+  );
   const repeatAnswer = readlineSync.question("===>");
-  if (repeatAnswer === "Да") return runner();
+  if (repeatAnswer.toLowerCase() === "да") return runner();
   return "Спасибо за игру!";
 }
 
