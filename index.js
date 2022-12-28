@@ -27,7 +27,7 @@ async function showQuestions() {
     const questionsList = fs.readFileSync(`./topics/Выдры.txt`, 'utf-8')
     const questions = questionsList.split('\n\n').map((el) => ({ question: el.split('\n')[0], answer: el.split('\n')[1] }));
     
-return questions
+    console.log( questions)
 }
 showQuestions()
 
