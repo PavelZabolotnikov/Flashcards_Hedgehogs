@@ -23,20 +23,20 @@ function topic() {
     fs.readFileSync(`./topics/${el}`, 'utf-8').split('\n')
   );
   const top = arr.map((el) => el[0]);
-  return top; //.join(',\n').replace(/,/g, '');
+  return top.join(',\n').replace(/,/g, '');
 }
 
 let top = [];
 function topicquestion(question) {
   return new Promise((resolve, reject) => {
     rl.question(question, (topicone) => {
-      // top.push(topicone);
-      console.log(topicone);
+      top.push(topicone);
       resolve(topicone);
     });
   });
 }
 
+let quest = [];
 function qq() {
   const topicsq = fs.readdirSync('./topics', 'utf-8');
   const arrq = topicsq.map((el) =>
@@ -44,28 +44,32 @@ function qq() {
   );
   // console.log(arrq, 'ghghh'); // 4
   for (let i = 0; i < arrq.length; i += 1) {
-    if (top === arrq[i][0]) {
-      console.log(arrq[i]);
+    if (String(top) === arrq[i][0]) {
+      const as = arrq[i];
+      quest.push(as.filter((el, i) => !((i + 1) % 3)));
+      return quest.flat();
     }
   }
 }
 const qqq = qq();
 
-let quest = [];
-let answ = [];
+// let quest = [];
+// let answ = [];
 // function qwerty() {
-//   quest.push(qq().filter((el, i) => !((i + 1) % 3)));
-//   answ.push(qq().filter((el, i) => !(i % 3)));
+//   quest.push(qqq.filter((el, i) => !((i + 1) % 3)));
+//   answ.push(qqq.filter((el, i) => !(i % 3)));
 // }
 // qwerty();
 
-let questions = quest.flat();
-let answq = answ.flat().slice(1);
+let questions = [qqq];
+// let answq = answ.flat().slice(1);
 
 async function main() {
-  await namequestion('Добро пожаловать в игру! Как тебя зовут? ');
+  await namequestion('Как тебя зовут? ');
   await topicquestion(`${topic()} \nТвой ответ:====> `);
-  // await top;
+  await top;
+  await qq();
+  await qqq;
 
   let answers = [];
   count = 0;
