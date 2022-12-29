@@ -66,6 +66,7 @@ function quiz(question, answer) {
     count += 10;
   } else {
     console.log(chalk.red('\nОтвет неверный! 😿'));
+    console.log(`${chalk.blue('Правильный ответ:')} ${chalk.magenta(answer)}`);
     count -= 5;
   }
   console.log(`Ваш счет: ${chalk.yellow(count)} баллов!`);
@@ -82,7 +83,7 @@ for (let i = 0; i < questions.length; i += 1) {
 }
 
 console.log(
-  `${chalk.bgMagenta('\nИгра подошла к концу!')}💞 \nВаш счет: ${chalk.blue(
+  `${chalk.bgMagenta('\n💞Игра подошла к концу!💞')} \n🎈Ваш счет: ${chalk.blue(
     count
-  )} баллов!`
+  )} баллов!🎈`
 );
