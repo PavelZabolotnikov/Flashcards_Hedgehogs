@@ -1,6 +1,6 @@
 const fs = require('fs');
 const rl = require('readline-sync');
-let count = 0;
+const chalk = require('chalk');
 
 // Темы
 function topic() {
@@ -13,10 +13,12 @@ function topic() {
 }
 
 // Начало игры
-console.log('Добро пожаловать в игру!');
-const userName = rl.question('Как тебя зовут? ');
-console.log(`Привет ${userName}! Выбери тему:`);
-const chooseTopic = rl.question(`${topic()}\n ==>`);
+console.log(chalk.red('🔥🔥🔥 Добро пожаловать в игру! 🔥🔥🔥'));
+const userName = rl.question(chalk.yellow('🌸 Как тебя зовут? '));
+console.log(`Привет ${chalk.blue(userName)}! Выбери тему:`);
+const chooseTopic = rl.question(
+  `${chalk.green(topic())}\n${chalk.magenta('==>🐾 ')}`
+);
 
 // Вопросы
 function getQuestions() {
@@ -54,24 +56,33 @@ function getAnswers() {
   }
 }
 
+// Игра
+let count = 0;
 function quiz(question, answer) {
   const userAnswer = rl.question(question);
 
-  if (userAnswer.toUpperCase() === answer.toUpperCase()) {
-    console.log('\nЭто правильный ответ!');
+  if (userAnswer.toLowerCase() === answer.toLowerCase()) {
+    console.log(chalk.green('\nЭто правильный ответ! 😺'));
     count += 10;
   } else {
-    console.log('\nОтвет неверный!');
+    console.log(chalk.red('\nОтвет неверный! 😿'));
     count -= 5;
   }
-  console.log(`Ваш счет: ${count} баллов!`);
+  console.log(`Ваш счет: ${chalk.yellow(count)} баллов!`);
 }
 
 const questions = getQuestions();
 const answers = getAnswers();
 
 for (let i = 0; i < questions.length; i += 1) {
-  quiz(`\nВопрос: ${questions[i]}\n`, answers[i]);
+  quiz(
+    `${chalk.bgMagenta('\nВопрос:')} ${chalk.cyan(questions[i])}\n`,
+    answers[i]
+  );
 }
 
-console.log(`Игра подошла к концу! Ваш счет: ${count} баллов!`);
+console.log(
+  `${chalk.bgMagenta('\nИгра подошла к концу!')}💞 \nВаш счет: ${chalk.blue(
+    count
+  )} баллов!`
+);
