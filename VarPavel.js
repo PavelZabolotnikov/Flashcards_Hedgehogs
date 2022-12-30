@@ -14,30 +14,23 @@ const player = privetstviePlayers()
 
 async function getTopics() {
   console.clear();
-  
   fs.readdir(`./topics`, (err, files) => {
-    if (err) console.log(err);
+    if (err) console.log();
     else {
       console.log(`${player} Выбери Тему:`)
-      files.forEach((files) => {
-        console.log(files.slice(0, -4));
-        
+       files.forEach((files) => {
+         console.log(files.slice(0, -4)); 
       });
-      const number = readlineSync.question('Введи номер темы => ') 
-        console.log(number)
+      return  readlineSync.question('Введи номер темы => ') 
     }
-  });
-   
+  });   
 }
-getTopics();
+getTopics()
+const quezeNum =  getTopics() ;
 
- async function getQuestion()  {
-for (let i=0; i<4; i+=0) {
-  if (i === `${number}`) {
-    async function showQuestions() {
-  console.clear();
-  const quezeNum = getTopics();
-  const questionsList = fs.readFileSync(`./topics/${number}.txt`, "utf-8");
+async function showQuestions() {
+  
+  const questionsList = fs.readFileSync(`./topics/${quezeNum}.txt`, "utf-8");
   const questions = questionsList
     .split("\n\n")
     .map((el) => ({ question: el.split("\n")[0], answer: el.split("\n")[1] }));
@@ -45,12 +38,6 @@ for (let i=0; i<4; i+=0) {
   return questions;
 }
 showQuestions();
-  }
-}
-  }
-  getQuestion()
 
-// const rightAnswers = "Молодец";
-// const wrongAnswers = "Ещё повезет!";
 
 
