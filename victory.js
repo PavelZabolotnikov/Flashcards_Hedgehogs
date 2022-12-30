@@ -1,12 +1,19 @@
 const fs = require("fs");
 const readlineSync = require("readline-sync");
-
+const chalk = require("chalk");
 function getUserName() {
   console.clear();
-  console.log("Привет игрок! 🖐");
-  console.log("Мы Ежи и хотим предложить сыграть тебе в игру!");
-  console.log("Назови свое имя:");
-  return readlineSync.question("===>");
+  console.log(
+    `❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤ ${chalk.green(
+      "Привет игрок! 🖐"
+    )} ❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤
+    `
+  );
+  console.log(
+    "            Мы Ежи и хотим предложить сыграть тебе в игру!              "
+  );
+  console.log("                           Назови свое имя:                  ");
+  return readlineSync.question(chalk.magenta("===>"));
 }
 
 const userName = getUserName();
@@ -16,14 +23,15 @@ function getNumberOfQweze() {
   let questionList = "";
   namesOfFiles.map(
     (el) =>
-      (questionList += `${
+      (questionList += `                              ${
         fs.readFileSync(`./topics/${el}`, "utf-8").split("\n")[0]
       }\n`)
   );
   console.clear();
-  console.log(`${userName}, выбери тему:`);
-  console.log(questionList);
-  return readlineSync.question("===>");
+  console.log(
+    `❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤ ${chalk.yellow(`${userName}, выбери тему:`)}  ❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤`);
+  console.log(chalk.cyan(questionList));
+  return readlineSync.question(chalk.magenta("===>"));
 }
 
 function quezeReader() {
@@ -38,19 +46,19 @@ function runner() {
   let counter = 0;
   for (let i = 0; i < questionList.length; i += 2) {
     // console.clear();
-    console.log(questionList[i]);
-    answer = readlineSync.question("===>");
+    console.log(chalk.bgGreen(`                               ${questionList[i]}                                            `));
+    answer = readlineSync.question(chalk.magenta("===>"));
     if (answer.toLowerCase() === questionList[i + 1].toLowerCase()) {
       counter += 10;
-      console.log(`Верно! Твои баллы: ${counter}`);
-    } else console.log(`Неверно! Правильный ответ: ${questionList[i + 1]}`);
+      console.log(chalk.yellow(`                               Верно! Твои баллы: ${counter}                                            `));
+    } else console.log(chalk.red(`                               Неверно! Правильный ответ: ${questionList[i + 1]}                                            `));
   }
   console.log(
-    `Квиз окончен! Ты набрал(а) ${counter} баллов! Хочешь повторить?`
-  );
-  const repeatAnswer = readlineSync.question("===>");
+    chalk.bgMagenta(`                               Квиз окончен! Ты набрал(а) ${counter} баллов! Хочешь повторить?                                            `
+  ));
+  const repeatAnswer = readlineSync.question(chalk.magenta("===>"));
   if (repeatAnswer.toLowerCase() === "да") return runner();
-  return "Спасибо за игру!";
+  return chalk.red("                               Спасибо за игру!                               ");
 }
 
 console.log(runner());
