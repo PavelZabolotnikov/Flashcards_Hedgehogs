@@ -1,27 +1,4 @@
 {
-  "name": "flashcards_hedgehogs",
-  "version": "1.0.0",
-  "description": "## Введение Вам предстоит создать приложение для флэш-карт, которое должно работать как показано на Рисунке 1. Сосредоточьтесь на написании элегантного, объектно-ориентированного кода, не забывая при этом о качественном проектировании и об отборе лучших методов.",
-  "main": "victory.js",
-  "scripts": {
-    "start": "node victory.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PavelZabolotnikov/Flashcards_Hedgehogs.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PavelZabolotnikov/Flashcards_Hedgehogs/issues"
-  },
-  "homepage": "https://github.com/PavelZabolotnikov/Flashcards_Hedgehogs#readme",
-  "devDependencies": {
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.24.1"
-  },
   "dependencies": {
     "chalk": "^4.1.2",
     "readline-sync": "^1.4.10"
